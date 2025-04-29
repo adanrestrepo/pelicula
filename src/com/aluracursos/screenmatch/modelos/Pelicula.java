@@ -1,32 +1,21 @@
-public class Pelicula {
-    String nombre; //atributo
+package com.aluracursos.screenmatch.modelos;
 
-    int fechaDeLanzamiento; //atributo
+import com.aluracursos.screenmatch.calculos.Clasificacion;
 
-    int duracionEnMinutos; //atributo
+public class Pelicula extends Titulo implements Clasificacion {
 
-    boolean incluidoEnElPlan; //atributo
-    private double sumaDeLasEvaluaciones; //atributo privado para evitar modificaciones
-    private int totalDeLasEvaluaciones; //atributo
+    private String director;
 
-    int getTotalDeLasEvaluaciones(){//metodo
-        return totalDeLasEvaluaciones;
-
+    public String getDirector() {
+        return director;
     }
 
-    void muestraFichaTecnica(){ //metodo
-        System.out.println("El nombre de la pelicula es: " + nombre);
-        System.out.println("Su fecha de lanzamiento: " + fechaDeLanzamiento);
-        System.out.println("Duracion en minutos: " + duracionEnMinutos);
+    public void setDirector(String director) {
+        this.director = director;
     }
 
-    void evalua(double nota){ //metodo
-        sumaDeLasEvaluaciones += nota;
-        totalDeLasEvaluaciones++;
-
+    @Override
+    public int getClasificacion() {
+        return (int) (calculaMedia() / 2);
     }
-    double calculaMedia(){ //metodo
-        return sumaDeLasEvaluaciones / totalDeLasEvaluaciones;
-    }
-
 }
